@@ -4,6 +4,7 @@
   background: white;
   position: absolute;
   transition: 0.5s;
+  display: none;
 }
 
 .sidebar--open {
@@ -12,4 +13,12 @@
   background: white;
   position: absolute;
   transition: 0.5s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar__header {
+  font-size: var(--font-size-header);
+  margin: 10px 0 10px 0;
 }

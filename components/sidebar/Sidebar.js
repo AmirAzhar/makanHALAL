@@ -1,4 +1,5 @@
 import sidebarStyles from "/styles/Sidebar.module.css";
+import SearchBar from "./Searchbar";
 import { useState } from "react";
 
 function Sidebar() {
@@ -16,9 +17,18 @@ function Sidebar() {
           : sidebarStyles["sidebar--close"]
       }
     >
-      <button onClick={() => toggleVisible()}>Test</button>
+      <div className={sidebarStyles["sidebar__header"]}>
+        makan<b>HALAL</b>
+      </div>
+      <SearchBar />
+      <div className={sidebarStyles["sidebar__filters"]}>Filters</div>
+      <div className={sidebarStyles["sidebar__list"]}>List</div>
     </div>
   );
 }
 
 export default Sidebar;
+
+{
+  /* <button onClick={() => toggleVisible()}>Test</button> */
+}

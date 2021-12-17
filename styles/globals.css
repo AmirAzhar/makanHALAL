@@ -1,3 +1,8 @@
+:root {
+  --font-size-header: 30px;
+  --font-size-content: 15px;
+}
+
 html,
 body {
   padding: 0;
@@ -13,5 +18,5 @@ a {
 
 * {
   box-sizing: border-box;
-  outline: 1px red solid;
+  /* outline: 1px red solid; */
 }
