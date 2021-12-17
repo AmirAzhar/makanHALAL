@@ -1,4 +1,4 @@
-import sidebarStyles from "../styles/Sidebar.module.css";
+import sidebarStyles from "/styles/Sidebar.module.css";
 import { useState } from "react";
 
 function Sidebar() {
@@ -11,7 +11,9 @@ function Sidebar() {
   return (
     <div
       className={
-        visible ? sidebarStyles.sidebarOpen : sidebarStyles.sidebarClose
+        visible
+          ? sidebarStyles["sidebar--open"]
+          : sidebarStyles["sidebar--close"]
       }
     >
       <button onClick={() => toggleVisible()}>Test</button>

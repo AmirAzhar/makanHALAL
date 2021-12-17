@@ -1,4 +1,4 @@
-.sidebarClose {
+.sidebar--close {
   height: 100vh;
   width: 0;
   background: white;
@@ -6,7 +6,7 @@
   transition: 0.5s;
 }
 
-.sidebarOpen {
+.sidebar--open {
   height: 100vh;
   width: 400px;
   background: white;
