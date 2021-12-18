@@ -17,7 +17,7 @@ function Sidebar({ menuVisible }) {
         makan<b>HALAL</b>
       </div>
       <FilterOptions />
-      <div className={sidebarStyles["sidebar__list"]}>List</div>
+      <div className={sidebarStyles["sidebar__list"]}></div>
     </div>
   );
 }

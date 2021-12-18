@@ -22,10 +22,12 @@
     8.7px 1.6px 10.9px -1.2px hsl(0deg 0% 0% / 0.11),
     20.1px 3.7px 25.1px -1.8px hsl(0deg 0% 0% / 0.12);
   border-radius: 0 40px 0 0;
+  z-index: 5;
 }
 
 .sidebar__header {
   font-size: var(--font-size-header);
   width: 400px;
   text-align: center;
+  padding: 20px;
 }
