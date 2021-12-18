@@ -1,3 +1,4 @@
+// Google Maps API
 import {
   GoogleMap,
   useLoadScript,
@@ -5,29 +6,16 @@ import {
   InfoWindow,
 } from "@react-google-maps/api";
 
-import mapStyles from "./mapStyles";
+// Google Maps Constants
+import mapConstants from "./mapConstants";
 
+// Components
 import FullMenu from "../sidebar/FullMenu";
-
-const libraries = ["places"];
-const mapContainerStyle = {
-  width: "100vw",
-  height: "100vh",
-};
-const center = {
-  lat: 1.3584108786341489,
-  lng: 103.82516899727196,
-};
-const options = {
-  styles: mapStyles,
-  disableDefaultUI: true,
-  zoomControl: true,
-};
 
 function Map() {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_JAVASCRIPT_API,
-    libraries,
+    libraries: mapConstants.libraries,
   });
 
   if (loadError) return "Error loading maps";
@@ -37,10 +25,10 @@ function Map() {
     <div>
       <FullMenu />
       <GoogleMap
-        mapContainerStyle={mapContainerStyle}
-        zoom={12}
-        center={center}
-        options={options}
+        mapContainerStyle={mapConstants.mapContainerStyle}
+        zoom={mapConstants.zoom}
+        center={mapConstants.center}
+        options={mapConstants.options}
       ></GoogleMap>
     </div>
   );
