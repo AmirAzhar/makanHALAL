@@ -87,7 +87,7 @@ function Map() {
             key={marker.address}
             position={{ lat: marker.lat, lng: marker.lng }}
             icon={{
-              url: "/halalMarker.svg",
+              url: "/halalMarker.png",
               scaledSize: new window.google.maps.Size(50, 50),
               origin: new window.google.maps.Point(0, 0),
               anchor: new window.google.maps.Point(15, 15),
