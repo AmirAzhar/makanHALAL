@@ -1,18 +1,14 @@
+// Styles
 import sidebarStyles from "/styles/Sidebar.module.css";
+
+// Components
 import FilterOptions from "./FilterOptions";
-import { useState } from "react";
 
-function Sidebar() {
-  const [visible, setVisible] = useState(true);
-
-  function toggleVisible() {
-    setVisible(!visible);
-  }
-
+function Sidebar({ menuVisible }) {
   return (
     <div
       className={
-        visible
+        menuVisible
           ? sidebarStyles["sidebar--open"]
           : sidebarStyles["sidebar--close"]
       }
