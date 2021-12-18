@@ -6,18 +6,20 @@ import { useState } from "react";
 
 // Components
 import Sidebar from "../components/sidebar/Sidebar";
+import Map from "../components/map/Map";
 
 // Icons
 import { GiHamburgerMenu } from "react-icons/gi";
 import { BsArrowLeftShort } from "react-icons/bs";
 
 export default function Home() {
-  const [menuVisible, isMenuVisible] = useState(true);
+  const [menuVisible, isMenuVisible] = useState(false);
   function toggleMenuVisibility() {
     isMenuVisible(!menuVisible);
   }
   return (
     <div className={styles.home}>
+      <Map style={{ zIndex: "1" }} />
       <Sidebar menuVisible={menuVisible} />
       {menuVisible ? (
         <BsArrowLeftShort
@@ -28,10 +30,9 @@ export default function Home() {
         <GiHamburgerMenu
           className={styles["menu-icon"]}
           onClick={toggleMenuVisibility}
+          style={{ zIndex: "5" }}
         />
       )}
-
-      <h1 className={styles.title}>Welcome to makanHALAL</h1>
     </div>
   );
 }
