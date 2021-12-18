@@ -29,4 +29,5 @@
   font-size: var(--font-size-header);
   width: 400px;
   text-align: center;
+  padding: 20px;
 }

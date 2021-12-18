@@ -6,4 +6,5 @@
 
 .home {
   height: 100vh;
+  font-family: var(--font-family-sora);
 }

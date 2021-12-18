@@ -1,7 +1,7 @@
 .menu-icon {
   font-size: 40px;
   position: absolute;
-  margin: 5px 5px 5px 10px;
+  margin: 25px;
   cursor: pointer;
   transition: 0.3s;
 }
