@@ -7,6 +7,8 @@ import {
 
 import mapStyles from "./mapStyles";
 
+import FullMenu from "../sidebar/FullMenu";
+
 const libraries = ["places"];
 const mapContainerStyle = {
   width: "100vw",
@@ -33,6 +35,7 @@ function Map() {
 
   return (
     <div>
+      <FullMenu />
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
         zoom={12}

@@ -1,0 +1,10 @@
+.menu-icon {
+  font-size: 40px;
+  position: absolute;
+  margin: 5px 5px 5px 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.menu-icon:hover {
+  transform: scale(1.2);
+}
