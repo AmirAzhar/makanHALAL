@@ -45,13 +45,12 @@ function Map() {
           lat: position.coords.latitude,
           lng: position.coords.longitude,
         };
-        panTo(newCurrentLocation);
         setCurrentLocation(newCurrentLocation);
         console.log("set");
       },
       () => null
     );
-  }, [panTo]);
+  });
 
   // Init the google map API
   const { isLoaded, loadError } = useLoadScript({
