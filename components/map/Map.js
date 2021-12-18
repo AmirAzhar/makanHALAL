@@ -1,5 +1,5 @@
 // React
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 
 // Google Maps API
 import {
@@ -22,6 +22,9 @@ function Map() {
   // Selected infoWindow
   const [selected, setSelected] = useState(null);
 
+  // Current Location
+  const [currentLocation, setCurrentLocation] = useState(mapConstants.center);
+
   // Reference the map
   const mapRef = useRef();
   const onMapLoad = useCallback((map) => {
@@ -34,6 +37,22 @@ function Map() {
     mapRef.current.setZoom(15);
   }, []);
 
+  // Pan to location at the start
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const newCurrentLocation = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        };
+        panTo(newCurrentLocation);
+        setCurrentLocation(newCurrentLocation);
+        console.log("set");
+      },
+      () => null
+    );
+  }, [panTo]);
+
   // Init the google map API
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_JAVASCRIPT_API,
@@ -42,17 +61,6 @@ function Map() {
 
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "Loading maps...";
-
-  // Pan to location at the start
-  navigator.geolocation.getCurrentPosition(
-    (position) => {
-      panTo({
-        lat: position.coords.latitude,
-        lng: position.coords.longitude,
-      });
-    },
-    () => null
-  );
 
   return (
     <div>
@@ -65,6 +73,15 @@ function Map() {
         options={mapConstants.options}
         onLoad={onMapLoad}
       >
+        <Marker
+          position={{ lat: currentLocation.lat, lng: currentLocation.lng }}
+          icon={{
+            url: "/myLocationDot.svg",
+            scaledSize: new window.google.maps.Size(20, 20),
+            origin: new window.google.maps.Point(0, 0),
+            anchor: new window.google.maps.Point(15, 15),
+          }}
+        />
         {markers.map((marker) => (
           <Marker
             key={marker.address}
