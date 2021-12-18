@@ -1,5 +1,5 @@
 // React
-import { useState } from "react";
+import { useState, useRef, useCallback } from "react";
 
 // Google Maps API
 import {
@@ -16,9 +16,24 @@ import markers from "./fakeMapData";
 
 // Components
 import FullMenu from "../sidebar/FullMenu";
+import LocateMe from "./LocateMe";
 
 function Map() {
+  // Selected infoWindow
   const [selected, setSelected] = useState(null);
+
+  // Reference the map
+  const mapRef = useRef();
+  const onMapLoad = useCallback((map) => {
+    mapRef.current = map;
+  }, []);
+
+  // Pan to a given location
+  const panTo = useCallback(({ lat, lng }) => {
+    mapRef.current.panTo({ lat, lng });
+    mapRef.current.setZoom(15);
+  }, []);
+
   // Init the google map API
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_JAVASCRIPT_API,
@@ -26,18 +41,29 @@ function Map() {
   });
 
   if (loadError) return "Error loading maps";
-  if (!isLoaded) {
-    return "Loading maps...";
-  }
+  if (!isLoaded) return "Loading maps...";
+
+  // Pan to location at the start
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      panTo({
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      });
+    },
+    () => null
+  );
 
   return (
     <div>
       <FullMenu />
+      <LocateMe panTo={panTo} />
       <GoogleMap
         mapContainerStyle={mapConstants.mapContainerStyle}
         zoom={mapConstants.zoom}
         center={mapConstants.center}
         options={mapConstants.options}
+        onLoad={onMapLoad}
       >
         {markers.map((marker) => (
           <Marker
