@@ -1,5 +1,5 @@
 import sidebarStyles from "/styles/Sidebar.module.css";
-import SearchBar from "./Searchbar";
+import FilterOptions from "./FilterOptions";
 import { useState } from "react";
 
 function Sidebar() {
@@ -20,8 +20,7 @@ function Sidebar() {
       <div className={sidebarStyles["sidebar__header"]}>
         makan<b>HALAL</b>
       </div>
-      <SearchBar />
-      <div className={sidebarStyles["sidebar__filters"]}>Filters</div>
+      <FilterOptions />
       <div className={sidebarStyles["sidebar__list"]}>List</div>
     </div>
   );
