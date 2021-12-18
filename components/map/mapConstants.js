@@ -14,7 +14,6 @@ const mapConstants = {
   options: {
     styles: mapStyles,
     disableDefaultUI: true,
-    zoomControl: true,
     gestureHandling: "greedy",
   },
   zoom: 12,
