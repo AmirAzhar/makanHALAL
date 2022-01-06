@@ -12,11 +12,13 @@ import {
 
 // Google Maps Constants
 import mapConstants from "./mapConstants";
-import markers from "./fakeMapData";
 
 // Components
 import FullMenu from "../sidebar/FullMenu";
 import LocateMe from "./LocateMe";
+
+// Axios
+import axios from "axios";
 
 function Map() {
   // Selected infoWindow
@@ -24,6 +26,9 @@ function Map() {
 
   // Current Location
   const [currentLocation, setCurrentLocation] = useState(mapConstants.center);
+
+  // Markers
+  const [markers, setMarkers] = useState([]);
 
   // Reference the map
   const mapRef = useRef();
@@ -50,6 +55,11 @@ function Map() {
       },
       () => null
     );
+
+    // // request posts from api
+    // axios.get("http://localhost:3000/api/halalFoodPlaces").then((res) => {
+    //   setMarkers(res.data);
+    // });
   });
 
   // Init the google map API
@@ -84,7 +94,7 @@ function Map() {
         {markers.map((marker) => (
           <Marker
             key={marker.address}
-            position={{ lat: marker.lat, lng: marker.lng }}
+            position={{ lat: Number(marker.lat), lng: Number(marker.lng) }}
             icon={{
               url: "/halalMarker.png",
               scaledSize: new window.google.maps.Size(50, 50),
