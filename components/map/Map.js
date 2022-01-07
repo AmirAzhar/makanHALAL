@@ -51,16 +51,17 @@ function Map() {
           lng: position.coords.longitude,
         };
         setCurrentLocation(newCurrentLocation);
-        console.log("set");
       },
       () => null
     );
 
-    // // request posts from api
-    // axios.get("http://localhost:3000/api/halalFoodPlaces").then((res) => {
-    //   setMarkers(res.data);
-    // });
-  });
+    // request posts from api
+    const getPlacesFromAPI = async () => {
+      const res = await axios.get("http://localhost:3000/api/halalFoodPlaces");
+      setMarkers(res.data);
+    };
+    getPlacesFromAPI();
+  }, []);
 
   // Init the google map API
   const { isLoaded, loadError } = useLoadScript({
@@ -81,6 +82,7 @@ function Map() {
         center={mapConstants.center}
         options={mapConstants.options}
         onLoad={onMapLoad}
+        onClick={() => setSelected(null)}
       >
         <Marker
           position={{ lat: currentLocation.lat, lng: currentLocation.lng }}
@@ -93,7 +95,7 @@ function Map() {
         />
         {markers.map((marker) => (
           <Marker
-            key={marker.address}
+            key={marker._id}
             position={{ lat: Number(marker.lat), lng: Number(marker.lng) }}
             icon={{
               url: "/halalMarker.png",
@@ -108,13 +110,13 @@ function Map() {
         ))}
         {selected ? (
           <InfoWindow
-            position={{ lat: selected.lat, lng: selected.lng }}
+            position={{ lat: Number(selected.lat), lng: Number(selected.lng) }}
             onCloseClick={() => {
               setSelected(null);
             }}
           >
             <div>
-              <h4>{selected.name}</h4>
+              <h4>{selected.company}</h4>
               <h4>{selected.address}</h4>
             </div>
           </InfoWindow>
