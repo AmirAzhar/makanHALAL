@@ -57,7 +57,8 @@ function Map() {
 
     // request posts from api
     const getPlacesFromAPI = async () => {
-      const res = await axios.get("http://localhost:3000/api/halalFoodPlaces");
+      const url = "/api/halalFoodPlaces";
+      const res = await axios.get(url);
       setMarkers(res.data);
     };
     getPlacesFromAPI();
