@@ -2,7 +2,7 @@
 import sidebarStyles from "/styles/Sidebar.module.css";
 
 // Components
-import FilterOptions from "./FilterOptions";
+import FilterOptions from "./helpers/FilterOptions";
 
 function Sidebar({ menuVisible }) {
   return (

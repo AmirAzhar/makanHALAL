@@ -5,7 +5,7 @@ import fullMenuStyles from "/styles/FullMenu.module.css";
 import { useState } from "react";
 
 // Components
-import Sidebar from "./Sidebar";
+import Sidebar from "../sidebar";
 
 // Icons
 import { GiHamburgerMenu } from "react-icons/gi";

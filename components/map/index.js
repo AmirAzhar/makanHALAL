@@ -11,11 +11,11 @@ import {
 } from "@react-google-maps/api";
 
 // Google Maps Constants
-import mapConstants from "./mapConstants";
+import mapConstants from "./helpers/mapConstants";
 
 // Components
-import FullMenu from "../sidebar/FullMenu";
-import LocateMe from "./LocateMe";
+import FullMenu from "../fullMenu";
+import LocateMe from "./helpers/LocateMe";
 
 // Axios
 import axios from "axios";

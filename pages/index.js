@@ -2,7 +2,7 @@
 import styles from "../styles/Home.module.css";
 
 // Components
-import Map from "../components/map/Map";
+import Map from "../components/map";
 
 export default function Home() {
   return (
